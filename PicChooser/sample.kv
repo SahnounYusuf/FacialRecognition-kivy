@@ -1,0 +1,39 @@
+#:kivy 1.10.0
+<ColoredBackground@Image>:
+    font_size: '48sp'
+    color: (.9, .5, .4, 1)
+    canvas.before:
+        Color:
+            rgb: (.2, .9, .9)
+        Rectangle:
+            pos: self.x + sp(2), self.y + sp(2)
+            size: self.width - sp(5), self.height - sp(4)
+
+<SampBoxLayout>:
+    first_image: first_image     # <----
+    orientation: "vertical"
+    padding: 10
+    spacing: 10
+
+    # ---------- Button FileChooser ----------
+    BoxLayout:
+        orientation: "horizontal"
+        height: 30
+
+        Button:
+            text: "FileChooser"
+            on_press: root.get_image_one()
+        Button:
+            text: "TextIdentifier"
+            on_press: root.check_for_image()
+
+    # ---------- Display Images----------
+    BoxLayout:
+        orientation: "vertical"
+        height: 30
+
+        ColoredBackground:
+            id: first_image  # <----
+            size: self.parent.width, self.parent.height
+            allow_stretch: True
+            keep_ratio: False
